@@ -6,7 +6,7 @@ import telebot
 from telebot import types
 
 
-bot = telebot.TeleBot("2112306268:AAHUSJz8bHkM9a7zvgTRcBzYjb0PiCHIH8w")
+bot = telebot.TeleBot("2100247655:AAHLBo6lZK99bDQQDNlXwTpu7f0glUvzcSA")
 print("start")
 
 # button
