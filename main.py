@@ -1,4 +1,4 @@
-from token import token
+# from token import token
 # import telebot
 # bot = telebot.TeleBot(token["TOKEN"])
 
@@ -21,7 +21,7 @@ from token import token
 
 import telebot
 
-bot = telebot.TeleBot(token["TOKEN"])
+bot = telebot.TeleBot("2100247655:AAHLBo6lZK99bDQQDNlXwTpu7f0glUvzcSA")
 
 @bot.message_handler(commands=["start"])
 def start_func(message):
