@@ -51,6 +51,7 @@ def next(call):
         bot.edit_message_text(text="какой?", chat_id=call.message.chat.id, message_id=call.message.id) # редактируем сообщение
     elif call.data == "no":
         bot.edit_message_text(text="подсказать?", chat_id=call.message.chat.id, message_id=call.message.id)
+        bot.register_next_step_handler(msg, computer)
         def computer(message):
             if message.text.lower() == "да": # Проверка на ответ пользователя
                 msg = bot.send_message(message.chat.id, f"Незаменимая",) #reply_markup=None)
