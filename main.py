@@ -1,3 +1,7 @@
+
+
+
+
 import telebot
 from telebot import types
 
@@ -5,13 +9,21 @@ from telebot import types
 bot = telebot.TeleBot("2100247655:AAHLBo6lZK99bDQQDNlXwTpu7f0glUvzcSA")
 print("start")
 
-# # button
-# boardbtn = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True) #Создаем поле для кнопок
-# # Создаём кнопки
-# btn1 = types.KeyboardButton("да") 
-# btn2 = types.KeyboardButton("нет")
-# # Добавляем кнопки в поле
-# boardbtn.add(btn1, btn2)
+# button
+boardbtn = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True) #Создаем поле для кнопок
+# Создаём кнопки
+btn1 = types.KeyboardButton("да") 
+btn2 = types.KeyboardButton("нет")
+# Добавляем кнопки в поле
+boardbtn.add(btn1, btn2)
+
+# button
+boardbtn = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True) #Создаем поле для кнопок
+# Создаём кнопки
+btn3 = types.KeyboardButton("ага") 
+btn4 = types.KeyboardButton("неа")
+# Добавляем кнопки в поле
+boardbtn.add(btn3, btn4)
 
 
 #inline button
@@ -49,16 +61,17 @@ def hello(message):
 def next(call):
     if call.data == "yes":
         bot.edit_message_text(text="какой?", chat_id=call.message.chat.id, message_id=call.message.id) # редактируем сообщение
+        bot.send_message(message.chat.id, "нравиться?")
     elif call.data == "no":
         bot.edit_message_text(text="подсказать?", chat_id=call.message.chat.id, message_id=call.message.id)
-        bot.register_next_step_handler(msg, computer)
-        def computer(message):
-            if message.text.lower() == "да": # Проверка на ответ пользователя
+        bot.register_next_step_handler(msg,computerr)
+def computerr(message):
+            if message.text.lower() == "ага": # Проверка на ответ пользователя
                 msg = bot.send_message(message.chat.id, f"Незаменимая",) #reply_markup=None)
                 bot.register_next_step_handler(msg, next1)
-            elif message.text.lower() == "нет":
+            elif message.text.lower() == "неа":
                 msg = bot.send_message(message.chat.id, f"ок") # Прикрепление inline клавиатуры к нашему сообщению
-                bot.register_next_step_handler(msg, next)
+                bot.register_next_step_handler(msg, next1)
             else:
                 bot.send_message(message.chat.id, f"я тебя не понимаю, введи 'да' или 'нет'")
 
